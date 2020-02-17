@@ -2,16 +2,16 @@
 fileVersion=1
 
 # font settings
-fontName=Source Han Serif JP
+fontName=Rounded-L Mgen+ 2pp heavy
 fontFile=
 charSet=0
-fontSize=22
+fontSize=20
 aa=2
 scaleH=100
 useSmoothing=1
-isHalfYakumono=1
-xScaleH=82
-xScaleV=94
+isHalfYakumono=0
+xScaleH=100
+xScaleV=100
 isBold=0
 isItalic=0
 useUnicode=1

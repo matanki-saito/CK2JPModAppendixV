@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-
+import glob
 import hashlib
 import json
 import os
@@ -153,9 +153,17 @@ def assembly_app_mod_zip_file(out_file_path):
         os.makedirs(_(temp_dir_path, 'gfx'), exist_ok=True)
         os.makedirs(_(temp_dir_path, 'gfx', 'fonts'), exist_ok=True)
 
-        shutil.copy(_('.', '3_map_text', 'out', 'aoyagireisyo60.fnt'), _(temp_dir_path, 'gfx', 'fonts'))
-        shutil.copy(_('.', '3_map_text', 'out', 'aoyagireisyo60.tga'), _(temp_dir_path, 'gfx', 'fonts'))
-        # TODO: 追加する
+        for file in glob.glob('**/*.dds', recursive=True):
+            print(file)
+            shutil.copy(file, _(temp_dir_path, 'gfx', 'fonts'))
+
+        for file in glob.glob('**/*.tga', recursive=True):
+            print(file)
+            shutil.copy(file, _(temp_dir_path, 'gfx', 'fonts'))
+
+        for file in glob.glob('**/*.fnt', recursive=True):
+            print(file)
+            shutil.copy(file, _(temp_dir_path, 'gfx', 'fonts'))
 
         # zip化する
         return shutil.make_archive(out_file_path, 'zip', root_dir=temp_dir_path)

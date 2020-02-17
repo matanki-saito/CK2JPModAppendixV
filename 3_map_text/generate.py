@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from PIL import Image, ImageFilter, ImageEnhance
+from PIL import Image, ImageEnhance
 
 
 def invert(image):
@@ -16,16 +16,13 @@ def nega_posi(name, ext):
 
     # 透明度を上げる（アルファを下げる）
     enhancer = ImageEnhance.Brightness(a)
-    a_enh = enhancer.enhance(0.75)
+    a_enh = enhancer.enhance(0.8)
 
     # RGBとAを結合
-    im_enh = Image.merge(im.mode, (r, g, b, a_enh))
-
-    # ぼかし
-    im_g = im_enh.filter(ImageFilter.GaussianBlur(radius=0.1))
+    im_g = Image.merge(im.mode, (r, g, b, a_enh))
 
     # 上書き
-    im_g.save('./out/' + name + ".tga", quality=100)
+    im_g.save('./out/' + name + ext, quality=100)
 
 
 def generate_by_bmfont(name, ext, add_source_file):
