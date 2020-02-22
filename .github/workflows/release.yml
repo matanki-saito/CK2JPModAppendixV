@@ -31,12 +31,28 @@ jobs:
         add-type -AssemblyName system.drawing
         (New-Object System.Drawing.Text.InstalledFontCollection).Families
       shell: powershell
-    - name: install secure file
+    - name: Install secure file
       env: # Or as an environment variable
         SETTINGS_YAML: ${{ secrets.SETTINGS_YAML }}
+        CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
       run: |
-        set SETTINGS_YAML
         echo %SETTINGS_YAML% > settings.yml
-        dir
-        type settings.yml
+        echo %CREDENTIALS_JSON% > credentials.json
       shell: cmd
+    - name: Generate map font
+      run: |
+        cd 3_map_text
+        mkdir out
+        python generate.py
+        cd out
+        dir
+    - name: Generate main font copy
+      run: |
+        cd 2_main_text
+        mkdir out
+        python generate.py
+        cd out
+        dir
+    - name: Pack mod and upload
+      run: |
+        python main.py
