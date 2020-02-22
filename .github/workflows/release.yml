@@ -21,7 +21,8 @@ jobs:
         python -m pip install --upgrade pip
     - name: Install PyDrive and pillow
       run: |
-        pip install PyDrive && install pillow
+        pip install PyDrive
+        pip install pillow
     - name: Install fonts
       run: |
         cd 1_tool
