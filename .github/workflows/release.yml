@@ -35,7 +35,8 @@ jobs:
       env: # Or as an environment variable
         SETTINGS_YAML: ${{ secrets.SETTINGS_YAML }}
       run: |
-        set
+        set SETTINGS_YAML
         echo %SETTINGS_YAML% > settings.yml
         dir
+        type settings.yml
       shell: cmd
