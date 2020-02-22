@@ -36,8 +36,10 @@ jobs:
         SETTINGS_YAML: ${{ secrets.SETTINGS_YAML }}
         CREDENTIALS_JSON: ${{ secrets.CREDENTIALS_JSON }}
       run: |
-        echo %SETTINGS_YAML% > settings.yml
-        echo %CREDENTIALS_JSON% > credentials.json
+        python env2file.py
+        dir
+        type credentials.json
+        type settings.yaml
       shell: cmd
     - name: Generate map font
       run: |
