@@ -35,5 +35,7 @@ jobs:
       shell: powershell
     - name: install secure file
       run: |
+        set
         echo %SETTINGS_YAML% > settings.yml
+        dir
       shell: cmd
