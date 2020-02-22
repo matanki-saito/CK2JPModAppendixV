@@ -13,8 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
-      env: # Or as an environment variable
-        SETTINGS_YAML: ${{ secrets.SETTINGS_YAML }}
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
@@ -34,6 +32,8 @@ jobs:
         (New-Object System.Drawing.Text.InstalledFontCollection).Families
       shell: powershell
     - name: install secure file
+      env: # Or as an environment variable
+        SETTINGS_YAML: ${{ secrets.SETTINGS_YAML }}
       run: |
         set
         echo %SETTINGS_YAML% > settings.yml
